@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_gravity="center"
+    android:padding="16dp"
+    android:elevation="15dp">
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:background="#332C4E"
+        android:text="OPEN DIALOG"
+        android:textColor="@android:color/white"
+        android:onClick="OpenDialog"
+        android:layout_centerVertical="true"/>
+
+    </RelativeLayout>
