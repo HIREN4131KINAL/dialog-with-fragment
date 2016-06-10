@@ -1,14 +1,15 @@
 package example.com.dialogviewpager;
 
 import android.annotation.TargetApi;
-import android.app.Fragment;
+import android.support.v4.app.Fragment;
 import android.app.FragmentManager;
-import android.app.FragmentTransaction;
+import android.support.v4.app.FragmentTransaction;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.Window;
 import android.widget.Button;
 import android.widget.Toast;
 
@@ -19,7 +20,7 @@ public class FragmentOne extends Fragment {
 
     View view;
     Button Yes, No;
-
+    FragmentDialog fragmentDialog;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -33,12 +34,17 @@ public class FragmentOne extends Fragment {
             @Override
             public void onClick(View v) {
 
-                Fragment fr = new FragmentTwo();
-                FragmentManager fragmentManager = getChildFragmentManager();
-                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-                fragmentTransaction.replace(R.id.fragment, fr);
-                fragmentTransaction.addToBackStack(null);
-                fragmentTransaction.commit();
+                // Create new fragment and transaction
+                Fragment newFragment = new FragmentTwo();
+                FragmentTransaction transaction = getChildFragmentManager().beginTransaction();
+
+// Replace whatever is in the fragment_container view with this fragment,
+// and add the transaction to the back stack if needed
+                transaction.replace(R.id.fragment, newFragment);
+                transaction.addToBackStack(null);
+
+// Commit the transaction
+                transaction.commit();
 
                 Toast.makeText(getActivity(), "You click yes", Toast.LENGTH_SHORT).show();
             }
@@ -46,4 +52,5 @@ public class FragmentOne extends Fragment {
 
         return view;
     }
+
 }
